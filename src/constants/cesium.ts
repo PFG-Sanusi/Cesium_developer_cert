@@ -1,0 +1,9 @@
+export const CESIUM_ION_TOKEN_KEY = 'VITE_CESIUM_ION_TOKEN';
+export const DRONE_ALTITUDE_CLEARANCE_M = 50;
+export const MAX_WAYPOINTS = 10;
+export const DEFAULT_FLIGHT_SPEED_MS = 50; // metres per second
+export const ELEVATION_API_URL = 'https://api.open-elevation.com/api/v1/lookup';
+export const DRONE_MODEL_PATH = '/models/drone.glb';
+export const CLOCK_MULTIPLIER_MIN = 1;
+export const CLOCK_MULTIPLIER_MAX = 10;
+export const FALLBACK_ELEVATION_M = 0;
