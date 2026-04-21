@@ -9,23 +9,13 @@ import { buildCzml } from '@/lib/cesium/czmlBuilder'
  */
 export function useFlightPath(waypoints: Waypoint[], config: FlightConfig) {
   const [status, setStatus] = useState<AnimationStatus>('idle')
+  const [czmlData, setCzmlData] = useState<object[] | null>(null)
   const [telemState, setTelemState] = useState<Partial<AnimationState>>({
     currentLat: null,
     currentLon: null,
     currentAltM: null,
     currentSpeedMs: null
   })
-
-  // CZML is rebuilt only when waypoints or speed changes
-  const czmlData = useMemo(() => {
-    if (waypoints.length < 2) return null
-    try {
-      return buildCzml(waypoints, { speedMs: config.speedMs })
-    } catch (e) {
-      console.error('CZML Build Failed', e)
-      return null
-    }
-  }, [waypoints, config.speedMs])
 
   /**
    * Updates the real-time telemetry state.
@@ -38,15 +28,27 @@ export function useFlightPath(waypoints: Waypoint[], config: FlightConfig) {
    * Starts the flight animation.
    */
   const startFlight = useCallback(() => {
-    if (!czmlData) return
+    if (waypoints.length < 2) return
+
+    try {
+      // Build CZML at click-time so clock interval is always fresh.
+      const nextCzml = buildCzml(waypoints, { speedMs: config.speedMs })
+      setCzmlData(nextCzml)
+    } catch (e) {
+      console.error('CZML Build Failed', e)
+      setCzmlData(null)
+      return
+    }
+
     setStatus('playing')
-  }, [czmlData])
+  }, [waypoints, config.speedMs])
 
   /**
    * Stops the flight and resets all state to idle.
    */
   const stopFlight = useCallback(() => {
     setStatus('idle')
+    setCzmlData(null)
     setTelemState({
       currentLat: null,
       currentLon: null,

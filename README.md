@@ -116,26 +116,26 @@ The combination of terrain-aware 3D entity placement, CZML time-dynamic animatio
 │  │                      React Application                   │   │
 │  │                                                          │   │
 │  │  ┌─────────────┐   ┌──────────────────────────────────┐  │   │
-│  │  │FlightContext│   │           UI Layer                │  │   │
-│  │  │             │   │  ControlPanel  WaypointList       │  │   │
-│  │  │ useWaypoints│   │  FlightControls  StatusBar        │  │   │
+│  │  │FlightContext│   │           UI Layer               │  │   │
+│  │  │             │   │  ControlPanel  WaypointList      │  │   │
+│  │  │ useWaypoints│   │  FlightControls  StatusBar       │  │   │
 │  │  │ useFlightPath│  └──────────────────────────────────┘  │   │
-│  │  │ useCesiumClock   ┌──────────────────────────────────┐  │   │
-│  │  └──────┬──────┘   │         CesiumViewer.tsx          │  │   │
-│  │         │           │  Resium <Viewer>                  │  │   │
-│  │         │           │  Entity rendering                 │  │   │
-│  │         │           │  CzmlDataSource                   │  │   │
-│  │         └──────────►│  ScreenSpaceEventHandler          │  │   │
-│  │                     └──────────────┬─────────────────┘  │   │
-│  └──────────────────────────────────-─┼──────────────────┘   │   │
-│                                       │                       │
-│  ┌────────────────────────────────────▼──────────────────┐   │
-│  │                    CesiumJS Engine                     │   │
-│  │                                                        │   │
-│  │   Clock / Timeline     CZML DataSource                 │   │
-│  │   TerrainProvider      Entity Collection               │   │
-│  │   Scene / Camera       SampledPositionProperty         │   │
-│  └────────────────────────────────────────────────────────┘   │
+│  │  │ useCesiumClock   ┌──────────────────────────────────┐ │   │
+│  │  └──────┬──────┘   │         CesiumViewer.tsx          │ │   │
+│  │         │           │  Resium <Viewer>                 │ │   │
+│  │         │           │  Entity rendering                │ │   │
+│  │         │           │  CzmlDataSource                  | │   │
+│  │         └──────────►│  ScreenSpaceEventHandler         │ │   │
+│  │                     └──────────────┬─────────────────  ┘ │   │
+│  └──────────────────────────────────-─┼──────────────────┘  │   │
+│                                       │                         │
+│  ┌────────────────────────────────────▼──────────────────┐      │
+│  │                    CesiumJS Engine                     │     │
+│  │                                                        │     │
+│  │   Clock / Timeline     CZML DataSource                 │     │
+│  │   TerrainProvider      Entity Collection               │     │
+│  │   Scene / Camera       SampledPositionProperty         │     │
+│  └────────────────────────────────────────────────────────┘     │
 └─────────────────────────────────────────────────────────────────┘
          │                              │
          ▼                              ▼
@@ -453,7 +453,7 @@ npm run preview
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is proprietary software. All rights reserved. See [LICENSE](LICENSE) for details.
 
 ---
 
