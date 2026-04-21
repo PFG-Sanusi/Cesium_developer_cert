@@ -83,6 +83,17 @@ export function buildCzml(
     orientation: {
       velocityReference: '#position'
     },
+    // Always-visible fallback marker in case GLB fails to render in some environments.
+    point: {
+      pixelSize: 10,
+      color: {
+        rgba: [0, 255, 255, 255]
+      },
+      outlineColor: {
+        rgba: [0, 0, 0, 255]
+      },
+      outlineWidth: 2
+    },
     path: {
       show: true,
       width: 2,
